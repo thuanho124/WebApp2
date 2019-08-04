@@ -1,0 +1,49 @@
+﻿@model LibraryManagementWithAuthen.Models.Student
+
+@{
+    ViewData["Title"] = "Student TextBook Rental Dashboard";
+}
+
+<h1>Student TextBook Rental Dashboard</h1>
+<p>Current Login:</p>
+<p>First Name: @Html.DisplayFor(model => model.StudentFirstName)</p>
+<p>Last Name: @Html.DisplayFor(model => model.StudentLastName)</p>
+<p>Email: @Html.DisplayFor(model => model.StudentEmail)</p>
+<h4>Current rented textbooks</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Book Name
+            </th>
+            <th>
+                ISBN
+            </th>
+            <th>
+                Issue Date (yyyy-mm-dd)
+            </th>
+            <th>
+                Return Date (yyyy-mm-dd)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RentedBooks)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.BookName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
