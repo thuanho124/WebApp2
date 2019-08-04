@@ -19,6 +19,7 @@ As a student:
   * Extend the textbook rental if there are more than 3 same textbooks available.
   
 ## Database Context:
+#### LibDatabase database (for storing book, student, librarian, etc):
 Student Table - DbSet<> Student
   * StudentID - int
   * StudentFirstName - strintg
@@ -32,7 +33,7 @@ Librarian Table - DbSet<> Librarian
   * LibrarianEmail - string
   * LibrarianPassword - string (for log in and security purpose)
   
-Librarian Book - DbSet<> Book
+Book Table - DbSet<> Book
   * BookID - string
   * BookName - string
   * Author - string
@@ -43,12 +44,54 @@ Librarian Book - DbSet<> Book
   * Format - String
   * NumOfpages - int
   
- Librarian RentedBook - DbSet<> RentedBook
+ RentedBook Table - DbSet<> RentedBook
   * Student ID - int
   * BookID - int
   * IssueDate - DateTime
   * ReturnDate - DateTime
   
+#### Authentication database (for register and login):
+ AspNetRoleClaims table
+   * Id - int
+   * RoleId - nvarchar
+   * ClaimType - nvarchar
+   * ClaimValue - nvarchar
+   
+ AspNetRole table
+  * Id - int
+  * Name - nvarchar
+  * NormalizedName - nvarchar
+  * ConcurrencyStamp - nvarchar
+  
+ AspNetUserClaims table
+   * Id - int
+   * UserId - nvarchar
+   * ClaimType - nvarchar
+   * ClaimValue - nvarchar  
+
+ AspNetUserLogins table
+   * LoginProvider - nvarchar
+   * ProviderKey - nvarchar
+   * ProviderDisplayName - nvarchar
+   * UserId - nvarchar
+ 
+ AspNetUserRoles table
+   * RoleId - nvarchar
+   * UserId - nvarchar
+   
+ AspNetUserRoles table
+   * Id - int
+   * UserName - nvarchar
+   * NormalizedUserName - nvarchar
+   * Email - nvarchar
+   * NormalizedEmail - nvarchar
+   * PasswordHash - nvarchar
+AspNetUserTokens table
+   * UserId - nvarchar
+   * LoginProvider - nvarchar
+   * Name - nvarchar
+   * Value - nvarchar
+
   There may be more tables as the progress continues
   
   ## WebApp1b - Updated (07/20/2019):
